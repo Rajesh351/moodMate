@@ -1,16 +1,21 @@
-import Random from "./components/Random";
-import Tag from "./components/Tag";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import MoodTracker from "./pages/CreateNote";
+import MoodCards from "./pages/AllNotes"
 
-export default function App() {
+const App = () => {
   return (
-    <div className="w-full h-screen flex flex-col background relative items-center overflow-x-hidden ">
-      <h1 className="bg-white rounded-lg uppercase w-11/12 text-center mt-[40px] ml-[15px] py-2 px-10 text-4xl font-bold ">
-        Random Gifs
-      </h1>
-      <div className="flex flex-col w-full items-center gap-y-10 mt-[30px]">
-        <Random />
-        <Tag />
+    <Router>
+      <Header />
+      <div className="p-4 bg-orange-300">
+        <Routes>
+          <Route path="/showall" element={<MoodCards />} />
+          <Route path="/create" element={<MoodTracker />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
-}
+};
+
+export default App;
